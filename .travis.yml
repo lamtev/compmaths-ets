@@ -1,0 +1,28 @@
+language: generic
+
+sudo: required
+
+dist: trusty
+
+services:
+  - docker
+  
+install:
+  - docker pull lamtev/latex:full
+
+matrix:
+  include:
+    - env: ET="et1"
+
+script:
+  - docker run -v $TRAVIS_BUILD_DIR:/comp_maths_ets lamtev/latex:full /bin/bash -c " cd comp_maths_ets/${ET} && pdflatex ${ET}.tex && pdflatex ${ET}.tex "
+  - sudo chmod 777 ${TRAVIS_BUILD_DIR}/${ET}/${ET}.pdf
+  
+deploy:
+  provider: releases
+  api_key: "$GITHUB_DEPLOY_TOKEN"
+  file: 
+    - ${TRAVIS_BUILD_DIR}/${ET}/${ET}.pdf
+  skip_cleanup: true
+  on:
+    tags: true
