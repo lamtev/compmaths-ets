@@ -14,10 +14,10 @@
 Z[n+2] - 9 \cdot Z[n+1] + 18 \cdot Z[n] = n + 2
 \end{displaymath}
 \begin{displaymath}
-Z(0) = 1
+Z[0] = 1
 \end{displaymath}
 \begin{displaymath}
- Z(1) = 3
+ Z[1] = 3
 \end{displaymath}
 
 \item Осуществить проверку решения для $n = 2$
@@ -34,7 +34,7 @@ $Z[n+2] - 9 \cdot Z[n+1] + 18 \cdot Z[n] = 0$
 
 $Z[n] = c \cdot \lambda^n$
 
-$c \cdot \lambda^{n+2} - 9 \cdot c \cdot \lambda^{n+1} + 18 \cdot c \cdot \lambda^{n}$
+$c \cdot \lambda^{n+2} - 9 \cdot c \cdot \lambda^{n+1} + 18 \cdot c \cdot \lambda^{n} = 0$
 
 $\lambda^2 - 9 \cdot \lambda + 18 = 0$
 
@@ -83,7 +83,38 @@ $\\[0.5cm]
 $Z[n] = \frac{7}{12} \cdot 3^n + \frac{11}{75} \cdot 6^n + 0.1 \cdot n + 0.27$\\[0.5cm]
  
 
-\subsection{Методом вариаций}
+\subsection{Методом Лагранжа}
+\
+$Z^{\text{н}}[n] = c_1[n] \cdot \lambda_{1}^{n} + c_2[n] \lambda_{2}^{n}$\\[1.5mm]
+
+$Z[n+1] = c_1[n+1] \cdot \lambda_{1}^{n+1} + c_2[n+1] \lambda_{2}^{n+1} \pm c_1[n] \cdot \lambda_{1}^{n+1} \pm c_2[n] \cdot \lambda_{2}^{n+1} =\\[1.5mm] = \underbrace{c_1[n+1] \cdot \lambda_{1}^{n+1} - c_1[n] \cdot \lambda_{1}^{n+1} + c_2[n+1] \lambda_{2}^{n+1} - c_2[n] \cdot \lambda_{2}^{n+1}}_{\bigstar} + \\ + c_1[n] \cdot \lambda_{1}^{n+1} + c_2[n] \cdot \lambda_{2}^{n+1}$\\[1.5mm]
+
+$\bigstar = \Delta c_1[n] \cdot \lambda_1^{n+1} + \Delta c_2[n] \cdot \lambda_2^{n+1} = 0$\\[1.5mm]
+
+$Z[n+1] = c_1[n] \cdot \lambda_1^{n+1} + c_2[n] \cdot \lambda_2^{n+1}$\\[1.5mm]
+
+$Z[n+2] = c_1[n+1] \cdot \lambda_1^{n+2} + c_2[n+1] \cdot \lambda_2^{n+2} \pm c_1[n] \cdot \lambda_1^{n+2} \pm c_2[n] \cdot \lambda_2^{n+2} = \\[1.5mm] = \Delta c_1[n] \cdot \lambda_1^{n+2} + \Delta c_2[n] \cdot \lambda_2^{n+2} + c_1[n] \cdot \lambda_1^{n+2} + c_2[n] \cdot \lambda_2^{n+2} - 9 \cdot c_1[n] \cdot \lambda_1^{n+1} - \\[1.5mm] - 9 \cdot c_2[n] \cdot \lambda_2^{n+1} + 18 \cdot c_1[n] \cdot \lambda_1^{n} + 18 \cdot c_2[n] \cdot \lambda_2^{n} = \Delta c_1[n] \cdot \lambda_1^{n+2} + \Delta c_2[n] \cdot \lambda_2^{n+2} + \\[1.5mm] + c_1[n] \cdot \lambda_1^{n} \cdot \underbrace{\Bigl [\lambda_1^2 - 9 \cdot \lambda_1 + 18 \Bigl ]}_{= \ \ 0} + c_2[n] \cdot \lambda_2^{n} \cdot \underbrace{\Bigl [\lambda_2^2 - 9 \cdot \lambda_2 + 18 \Bigl ]}_{= \ \ 0} $\\[1.5mm]
+
+$\Delta c_1[n] \cdot \lambda_1^{n+2} + \Delta c_2[n] \cdot \lambda_2^{n+2} = n + 2 \ \ (\bigstar \bigstar)$\\[1.5mm]
+
+Домножим уравнение $\bigstar$ на $\lambda_2$ и вычтем из уравнения $\bigstar \bigstar$. Аналогично с $\lambda_1$.\\[1.5mm]
+
+$
+ \begin{cases}
+  \Delta c_1[n] \cdot \lambda_1^{n+1} \cdot (\lambda_1 - \lambda_2) = n + 2
+   \\
+   \Delta c_2[n] \cdot \lambda_2^{n+1} \cdot (\lambda_1 - \lambda_1) = n + 2
+ \end{cases}
+$
+$
+ \begin{cases}
+  \Delta c_1[n] = (\frac{1}{\lambda_1})^{{n+1}} \cdot (n + 2) \cdot \frac{1}{(\lambda_1 - \lambda_2)}  
+   \\
+   \Delta c_2[n] = (\frac{1}{\lambda_2})^{{n+1}} \cdot (n + 2) \cdot \frac{1}{(\lambda_2 - \lambda_1)}  
+ \end{cases}
+$
+
+
 
 \subsection{Проверка}
 
