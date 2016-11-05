@@ -152,10 +152,58 @@ S = \sum_{k=0}^{n-1} (\frac{1}{3})^{n} \cdot (n + 2) = -\frac{9}{2} \cdot \Bigl 
 \begin{flalign*}
 = -\frac{9}{2} \Bigl [ \Bigl ((\frac{1}{3})^{n+1} - 1 \Bigl ) \cdot (n+1) + \frac{2}{3} + \frac{1}{2} \cdot \Bigl ((\frac{1}{3})^n -1 \Bigl ) + n \Bigl ] = 
 \end{flalign*}
+
 \begin{flalign*}
-= -\frac{1}{12} \cdot \Bigl (\frac{1}{3} \Bigl )^n \cdot (5 \cdot 3^n -2 \cdot n - 5)
+c_1[n] = c_1[0] -\frac{1}{9} \cdot S = c_1[0] -\frac{1}{2} \Bigl [ \Bigl ((\frac{1}{3})^{n+1} - 1 \Bigl ) \cdot (n+1) + \frac{2}{3} + \frac{1}{2} \cdot \Bigl ((\frac{1}{3})^n -1 \Bigl ) + n \Bigl ]
 \end{flalign*}
 
+После упрощения:
+\begin{flalign*}
+c_1[n]= c_1[0] -\frac{1}{12} \cdot \Bigl (\frac{1}{3} \Bigl )^n \cdot (5 \cdot 3^n -2 \cdot n - 5)
+\end{flalign*}
+
+Аналогично,
+
+\begin{flalign*}
+c_2[n]= c_2[0] + \frac{11 \cdot 6^n -5 \cdot n - 11}{75 \cdot 6^n}
+\end{flalign*}
+
+\begin{flalign*}
+Z[n] = \Bigl (c_1[0] - \frac{1}{12} \Bigl (\frac{1}{3} \Bigl )^n (5 \cdot 3^n -2n - 5) \Bigl ) \cdot 3^n + \Bigl (c_2[0] +  \frac{11 \cdot 6^n -5n - 11}{75 \cdot 6^n} \Bigl ) \cdot 6^n
+\end{flalign*}
+
+Найдём $c_1[0]$ и $c_2[0]$, использую начальные условия:\\[1mm]
+
+$z[0] = c_1[0] + c_2[0] = 1$
+
+$z[1] = (c_1[0] - \frac{2}{9}) \cdot 3 + (c_2[0] + \frac{1}{9}) \cdot 6 = 3$\\[1.5mm]
+
+Получаем систему:\\[1mm]
+
+$
+ \begin{cases}
+  c_1[0] + c_2[0] = 1
+   \\
+   3 \cdot c_1[0] + 6 \cdot c_2[0] = 3
+ \end{cases}
+$
+$
+ \begin{cases}
+  c_1[0] = 1
+   \\
+  c_2[0] = 0
+ \end{cases}
+$
+
+\begin{flalign*}
+Z[n] = \Bigl (1 - \frac{1}{12} \Bigl (\frac{1}{3} \Bigl )^n (5 \cdot 3^n -2n - 5) \Bigl ) \cdot 3^n + \Bigl (0 +  \frac{11 \cdot 6^n -5n - 11}{75 \cdot 6^n} \Bigl ) \cdot 6^n
+\end{flalign*}
+
+После упрощения:
+
+\begin{flalign*}
+Z[n] = \frac{7}{12} \cdot 3^n + \frac{11}{75} \cdot 6^n + 0.1 \cdot n + 0.27
+\end{flalign*}
 
 
 \subsection{Проверка}
