@@ -120,7 +120,70 @@ $\epsilon(\frac{1}{3}) = -3.021070 \cdot 10^{-3}$
 
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[width=15cm]{image.png}
+		\includegraphics[width=15cm]{lagrange.png}
+		\caption{График реальной погрешности $\epsilon(x)$} 
+		\label{pic:1}
+	\end{center}
+\end{figure}
+
+
+\subsection{Построение интерполяционного полинома в форме Ньютона}
+
+$Q_m(x) = f(x_0) + (x - x_0) \cdot f(x_0;x_1) + (x - x_0) \cdot (x - x_1) \cdot f(x_0;x_1;x_2) + \ldots + \\[1mm] + (x - x_0) \cdot (x - x_1) \cdot \ldots \cdot (x - x_{m-1}) \cdot f(x_0;x_1;x_2; \ldots x_m)$\\[3mm]
+
+Сначала вычислим разделённые разности:\\[3mm]
+
+$f(x_0; x_1) = \frac{f(x_0) - f(x_1)}{x_0 - x_1} = \frac{2 - 2.261637}{0 - \frac{1}{6}} = 1.569822$\\[1mm]
+
+$f(x_1; x_2) = \frac{f(x_1) - f(x_2)}{x_1 - x_2} = \frac{2.261637 - 2.355828}{\frac{1}{6} - \frac{1}{4}} = 1.130292$\\[1mm]
+
+$f(x_2; x_3) = \frac{f(x_2) - f(x_3)}{x_2 - x_3} = \frac{2.355828 - 2.718281}{\frac{1}{4} - \frac{1}{2}} = 1.449812$\\[1mm]
+
+$f(x_0; x_1; x_2) = \frac{f(x_0; x_1) - f(x_1; x_2)}{x_0 - x_2} = \frac{1.569822 - 1.130292}{0 - \frac{1}{4}} = -1.758120$\\[1mm]
+
+$f(x_1; x_2; x_3) = \frac{f(x_1; x_2) - f(x_2; x_3)}{x_1 - x_3} = \frac{1.130292 - 1.449812}{\frac{1}{6} - \frac{1}{2}} = 0.958560$\\[1mm]
+
+$f(x_0; x_1; x_2; x_3) = \frac{f(x_0; x_1; x_2) - f(x_1; x_2; x_3)}{x_0 - x_3} = \frac{-1.758120 - 0.958560}{0 - \frac{1}{2}} = 5.433360$\\[3mm]
+
+$Q_3(x) = f(x_0) + (x - x_0) \cdot f(x_0;x_1) + (x - x_0) \cdot (x - x_1) \cdot f(x_0;x_1;x_2) + \\[1mm] + (x - x_0) \cdot (x - x_1) \cdot (x - x_2) \cdot f(x_0;x_1;x_2;x_3) = 2 + (x - x_0) \cdot 1.569822 + \\[1mm] + (x - x_0) \cdot (x - x_1) \cdot (-1.758120) + (x - x_0) \cdot (x - x_1) \cdot (x - x_2) \cdot 5.433360 = \\[2mm] = 5.433360 \cdot x^3 - 4.022020 \cdot x^2 + 2.089232 \cdot x + 2$\\[3mm]
+
+\subsubsection{Оценка погрешности}
+
+\begin{itemize}
+
+\item $x = \frac{1}{5}$
+
+$\Bigl | \frac{f(x) - Q_3(x)}{f(x)} \Bigl | = \Bigl | \frac{2.300841 - 2.300432}{2.300841} \Bigl | = 1.778531 \cdot 10^{-4}$
+
+\item $x = \frac{1}{3}$
+
+$\Bigl | \frac{f(x) - Q_3(x)}{f(x)} \Bigl | = \Bigl | \frac{2.447734 - 2.450755}{2.447734} \Bigl | = 1.234231 \cdot 10^{-3}$
+
+\end{itemize}
+
+\subsubsection{Вычисление реальной погрешности}
+
+\begin{displaymath}
+\epsilon(x) = f(x) - Q_3(x)
+\end{displaymath}
+
+\begin{itemize}
+
+\item $x = \frac{1}{5}$
+
+$\epsilon(\frac{1}{5}) = 4.092120 \cdot 10{^-4}$
+
+\item $x = \frac{1}{3}$
+
+$\epsilon(\frac{1}{3}) = -3.021070 \cdot 10{^-3}$
+
+\end{itemize}
+
+\subsubsection{График погрешности}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=15cm]{newton.png}
 		\caption{График реальной погрешности $\epsilon(x)$} 
 		\label{pic:1}
 	\end{center}
