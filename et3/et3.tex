@@ -4,10 +4,61 @@
 
 \include{titlepage}
 
+
 \section{Задание}
 
+\begin{displaymath}
+I = \int_{0}^{1} (\sqrt{1 + 2 \cdot x} + x)\ \ dx
+\end{displaymath}
+
+Вычислить приближённое значение интеграла I
+
+\begin{enumerate}
+
+\item По формуле Симпсона двумя способами:
+
+\begin{itemize}
+
+\item применив формулу ко всему интервалу интегрирования
+
+\item применив формулу к двум половинам интервала.
+
+\end{itemize}
+
+\item По формуле Чебышева с тремя узлами
+
+\item По формуле Гаусса с тремя узлами
+
+\item В целях исследования погрешностей интегрирования сравнить между собой приближённые значения интеграла, полученные всеми четырьмя способами. Вычислить реальные погрешности интегрирования \\ $\epsilon = I_\text{точн.} - I_\text{прибл.}$ для всех четырёх способов.
+
+\end{enumerate}
 
 \section{Решение}
 
+\subsection{По формуле Симпсона}
+
+\begin{displaymath}
+I = \frac{b - a}{6} \cdot \Big ( f(a) + 4 \cdot f \Big (\frac{b+a}{2} \Big ) + f(b) \Big )
+\end{displaymath}
+
+\subsubsection{Весь интервал}
+
+$I = \frac{1 - 0}{6} \cdot \Big ( 1 + 4 \cdot (\sqrt{2} + 0.5) + \sqrt{3} + 1 \Big ) = \frac{1}{6} \cdot \Big ( 1 + 4 \cdot (1.414213562 + 0.5) + 1.732050807 + 1 \Big ) = 1.898150842$
+
+\subsubsection{Две половины интервала}
+
+\begin{displaymath}
+I_1 = \int_{0}^{0.5} (\sqrt{1 + 2 \cdot x} + x)\ \ dx
+\end{displaymath}
+
+$I_1 = \frac{0.5 - 0}{6} \cdot \Big ( 1 + 4 \cdot (\sqrt{1.5} + 0.25) + \sqrt{2} + 0.5 \Big ) = \frac{1}{12} \cdot \Big ( 1 + 4 \cdot (1.224744871 + 0.25) + 1.414213562 + 0.5 \Big ) = 0.734432754$
+
+\begin{displaymath}
+I_2 = \int_{0.5}^{1} (\sqrt{1 + 2 \cdot x} + x)\ \ dx
+\end{displaymath}
+
+$I_1 = \frac{1 - 0.5}{6} \cdot \Big ( \sqrt{2} + 0.5 +  4 \cdot (\sqrt{1.375} + 0.75) + \sqrt{3} + 1 \Big ) = \frac{1}{12} \cdot \Big ( 1.414213562 + 0.5 +  4 \cdot (1.172603939 + 0.75) + 1.732050807 + 1 \Big ) = 1.028056677$
+
+$I = I_1 + I_2 = 1.762489431$
 
 \end{document}
