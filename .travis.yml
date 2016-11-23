@@ -14,6 +14,7 @@ matrix:
   include:
     - env: ET="et1"
     - env: ET="et2"
+    - env : ET="et3"
 
 script:
   - docker run -v $TRAVIS_BUILD_DIR:/comp_maths_ets lamtev/latex:full /bin/bash -c " cd comp_maths_ets/${ET} && pdflatex ${ET}.tex && pdflatex ${ET}.tex "
