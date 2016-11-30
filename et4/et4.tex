@@ -152,6 +152,24 @@ $\\[1mm]
 Q_2(x) = 0.416814823809832 \cdot x^2 - 0.9372239221896193 \cdot x + 0.9784178594645938
 \end{displaymath}
 
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{polynoms.png}
+		\caption{График исходной функции и аппроксимирующей функции} 
+		\label{pic:2:1:1}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{e_polynoms.png}
+		\caption{График погрешности аппроксимирующей функции} 
+		\label{pic:2:1:2}
+	\end{center}
+\end{figure}
+
+\newpage
+
 \subsection{С помощью ортонормированных многочленов}
 
 $f_0(x) \equiv 1, f_1(x) = x, f_2(x) = x^2, P(x) \equiv 1$
@@ -243,6 +261,22 @@ $\\[1mm]
 \begin{displaymath}
 Q_2(x) = 0.4168148238098192 \cdot x^2 - 0.9372239221896032 \cdot x + 0.9784178594645919
 \end{displaymath}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{ortonorm.png}
+		\caption{График исходной функции и аппроксимирующей функции} 
+		\label{pic:2:2:1}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{e_ortonorm.png}
+		\caption{График погрешности аппроксимирующей функции} 
+		\label{pic:2:2:2}
+	\end{center}
+\end{figure}
 
 \subsection{С помощью ортогональных многочленов Лежандра порядка до двух включительно}
 
@@ -344,7 +378,137 @@ $\\[1mm]
 Q_2(x) = 0.416814823809819 \cdot x^2 - 0.9372239221896035 \cdot x + 0.9784178594645921
 \end{displaymath}
 
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{legandre.png}
+		\caption{График исходной функции и аппроксимирующей функции} 
+		\label{pic:2:3:1}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{e_legandre.png}
+		\caption{График погрешности аппроксимирующей функции} 
+		\label{pic:2:3:2}
+	\end{center}
+\end{figure}
+
+\newpage
+
 \subsection{С помощью ортогональных многочленов Чебышева порядка до двух включительно}
 
+$P(x) = \frac{1}{\sqrt{1 - t^2}}$
+
+\begin{displaymath}
+T_0(t) = 1
+\end{displaymath}
+\begin{displaymath}
+T_1(t) = t
+\end{displaymath}
+\begin{displaymath}
+T_2(t) = 2t^2 - 1
+\end{displaymath}
+
+\begin{displaymath}
+\int_{-1}^{1} T_i(t) T_k(t) \frac{1}{\sqrt{1 - t^2}} dt = \begin{cases} 0, k \neq i \\ \frac{\pi}{2}, k = i \neq 0 \\ \pi, k = i = 0 \end{cases}
+\end{displaymath}
+
+\begin{displaymath}
+x = \frac{a + b}{2} + \frac{b - a}{2} t \Rightarrow t = \frac{2x - a - b}{b - a} = 2x - 1
+\end{displaymath}
+
+\begin{displaymath}
+T_0(x) = 1
+\end{displaymath}
+\begin{displaymath}
+T_1(x) = 2x - 1
+\end{displaymath}
+\begin{displaymath}
+T_2(x) = 8x^2 - 8x + 1
+\end{displaymath}
+\begin{displaymath}
+\int_0^1 T_i(2x - 1) T_k(2x - 1)\frac{1}{2 \sqrt{x - x^2}} dx = \begin{cases} 0, k \neq i \\ \frac{\pi}{2} \cdot \frac{1}{2}, k = i \neq 0 \\ \pi \cdot \frac{1}{2}, k = i = 0 \end{cases}
+\end{displaymath}
+
+\begin{displaymath}
+Q_2(x) = a_0 + a_1 \cdot (2x - 1) + a_2 \cdot (8x^2 - 8x + 1)
+\end{displaymath}
+
+\begin{displaymath}
+(\phi_0, \phi_0) = \frac{\pi}{2} \ \ (\phi_1, \phi_0) = (\phi_0, \phi_1) = 0
+\end{displaymath}
+\begin{displaymath}
+(\phi_1, \phi_1) = \frac{\pi}{4} \ \ (\phi_2, \phi_0) = (\phi_0, \phi_2) = 0
+\end{displaymath}
+\begin{displaymath}
+(\phi_2, \phi_2) = \frac{\pi}{4} \ \ (\phi_2, \phi_1) = (\phi_1, \phi_2) = 0
+\end{displaymath}
+
+\begin{displaymath}
+(f, \phi_0) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot \frac{1}{2 \sqrt{x - x^2}} dx = 1.047197551196598
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_1) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot (2x - 1) \frac{1}{2 \sqrt{x - x^2}} dx = -0.2094395102393195
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_2) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot (8x^2 - 8x + 1) \frac{1}{2 \sqrt{x - x^2}} dx = 0.04188790204786391
+\end{displaymath}
+
+$
+\begin{pmatrix}
+\frac{\pi}{2} & 0 & 0
+\\
+0 & \frac{\pi}{4} & 0
+\\
+0 & 0 & \frac{\pi}{4}
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+a_0
+\\
+a_1
+\\
+a_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+1.047197551196598
+\\
+-0.2094395102393195
+\\
+0.04188790204786391
+\end{pmatrix}
+$\\[1mm]
+
+$
+ \begin{cases}
+  a_0 = 0.6666666666666671
+\\
+  a_1 = -0.2666666666666667
+\\
+  a_2 = 0.05333333333333334
+ \end{cases}
+$\\[1mm]
+
+\begin{displaymath}
+Q_2(x) = 0.4266666666666667 \cdot x^2 - 0.9600000000000002 \cdot x + 0.9866666666666671
+\end{displaymath}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{chebyshev.png}
+		\caption{График исходной функции и аппроксимирующей функции} 
+		\label{pic:2:4:1}
+	\end{center}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[width=19cm]{e_chebyshev.png}
+		\caption{График погрешности аппроксимирующей функции} 
+		\label{pic:2:4:2}
+	\end{center}
+\end{figure}
 
 \end{document}
