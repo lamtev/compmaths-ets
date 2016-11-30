@@ -246,7 +246,103 @@ Q_2(x) = 0.4168148238098192 \cdot x^2 - 0.9372239221896032 \cdot x + 0.978417859
 
 \subsection{С помощью ортогональных многочленов Лежандра порядка до двух включительно}
 
+$P(x) \equiv 1$
 
+\begin{displaymath}
+L_0(t) = 1
+\end{displaymath}
+\begin{displaymath}
+L_1(t) = t
+\end{displaymath}
+\begin{displaymath}
+L_2(t) = \frac{1}{2} \cdot (3t^2 - 1)
+\end{displaymath}
+
+\begin{displaymath}
+\int_{-1}^{1} L_i(t) L_k(t) dt = \begin{cases} 0, k \neq i \\ \frac{2}{2k + 1}, k = i \end{cases}
+\end{displaymath}
+
+\begin{displaymath}
+x = \frac{a + b}{2} + \frac{b - a}{2} t \Rightarrow t = \frac{2x - a - b}{b - a} = 2x - 1
+\end{displaymath}
+
+\begin{displaymath}
+L_0(x) = 1
+\end{displaymath}
+\begin{displaymath}
+L_1(x) = 2x - 1
+\end{displaymath}
+\begin{displaymath}
+L_2(x) = 6x^2 - 6x + 1
+\end{displaymath}
+
+\begin{displaymath}
+\int_0^1 L_i(2x - 1) L_k(2x - 1) dx = \begin{cases} 0, k \neq i \\ \frac{2}{2k + 1} \cdot \frac{1}{2}, k = i \end{cases}
+\end{displaymath}
+
+\begin{displaymath}
+Q_2(x) = a_0 + a_1 \cdot (2x - 1) + a_2 \cdot (6x^2 - 6x + 1)
+\end{displaymath}
+
+\begin{displaymath}
+(\phi_0, \phi_0) = 1 \ \ (\phi_1, \phi_0) = (\phi_0, \phi_1) = 0
+\end{displaymath}
+\begin{displaymath}
+(\phi_1, \phi_1) = \frac{1}{3} \ \ (\phi_2, \phi_0) = (\phi_0, \phi_2) = 0
+\end{displaymath}
+\begin{displaymath}
+(\phi_2, \phi_2) = \frac{1}{5} \ \ (\phi_2, \phi_1) = (\phi_1, \phi_2) = 0
+\end{displaymath}
+
+\begin{displaymath}
+(f, \phi_0) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot 1 dx = 0.6487441729730634
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_1) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot (2x - 1) dx = -0.08673484972996404
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_2) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot (6x^2 - 6x + 1) dx = 0.0138938274603273
+\end{displaymath}
+
+$
+\begin{pmatrix}
+1 & 0 & 0
+\\
+0 & \frac{1}{3} & 0
+\\
+0 & 0 & \frac{1}{5}
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+a_0
+\\
+a_1
+\\
+a_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.6487441729730634
+\\
+-0.08673484972996404
+\\
+0.0138938274603273
+\end{pmatrix}
+$\\[1mm]
+
+$
+ \begin{cases}
+  a_0 = 0.6487441729730634
+\\
+  a_1 = -0.2602045491898922
+\\
+  a_2 = 0.06946913730163651
+ \end{cases}
+$\\[1mm]
+
+\begin{displaymath}
+Q_2(x) = 0.416814823809819 \cdot x^2 - 0.9372239221896035 \cdot x + 0.9784178594645921
+\end{displaymath}
 
 \subsection{С помощью ортогональных многочленов Чебышева порядка до двух включительно}
 
