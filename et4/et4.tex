@@ -26,9 +26,229 @@ f(x) = \frac{4}{4 + 5 \cdot x}
 
 \end{enumerate}
 
-Построить для интервала $\Big [ 0, 1 \Big ]$ график исходной функции, графики аппроксимирующих функций и графики погрешностей аппроксимации $\epsilon = f(x) - Q(x)$.
+Построить для интервала $\Big [ 0, 1 \Big ]$ график исходной функции, графики аппроксимирующих функций и графики погрешностей аппроксимации 
+
+$\varepsilon = f(x) - Q(x)$.
 
 \section{Решение}
+
+\begin{displaymath}
+Q_2(x) = a_0 \cdot \phi_0(x) + a_1 \cdot \phi_1(x) + a_2 \cdot \phi_2(x)
+\end{displaymath}
+
+\begin{displaymath}
+\rho^2 = \int_a^b P(x (Q_2(x) - f(x))^2 dx = \int_a^b P(x) (a_0 \phi_0(x) + a_1 \phi_1(x) + a_2 \phi_2(x) - f(x))^2 dx \  \  \ (\bigstar)
+\end{displaymath}
+
+$\bigstar \rightarrow minimum :$\\[1mm]
+
+$
+ \begin{cases}
+  \frac{\partial \rho^2}{\partial a_0} = 2 \int_a^b P(x) (a_0 \phi_0(x) + a_1 \phi_1(x) + a_2 \phi_2(x) - f(x)) \phi_0 dx = 0
+   \\[2mm]
+  \frac{\partial \rho^2}{\partial a_1} = 2 \int_a^b P(x) (a_0 \phi_0(x) + a_1 \phi_1(x) + a_2 \phi_2(x) - f(x)) \phi_1 dx = 0
+   \\[2mm]
+  \frac{\partial \rho^2}{\partial a_2} = 2 \int_a^b P(x) (a_0 \phi_0(x) + a_1 \phi_1(x) + a_2 \phi_2(x) - f(x)) \phi_2 dx = 0
+ \end{cases}
+$\\[1mm]
+
+\begin{displaymath}
+\Big (\phi_k, \phi_i \Big ) = \frac{1}{b - a} \cdot \int_a^b P(x) \cdot \phi_k(x) \cdot \phi_i(x)dx
+\end{displaymath}
+
+$
+\begin{pmatrix}
+(\phi_0, \phi_0) & (\phi_1, \phi_0) & (\phi_2, \phi_0)
+\\
+(\phi_0, \phi_1) & (\phi_1, \phi_1) & (\phi_2, \phi_1)
+\\
+(\phi_0, \phi_2) & (\phi_1, \phi_2) & (\phi_2, \phi_2)
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+a_0
+\\
+a_1
+\\
+a_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+(f, \phi_0)
+\\
+(f, \phi_1)
+\\
+(f, \phi_2)
+\end{pmatrix}
+$
+
+
+$a = 0, b = 1$
+
+\subsection{С использованием полинома второй степени}
+
+$\phi_0(x) \equiv 1, \phi_1(x) = x, \phi_2(x) = x^2, P(x) \equiv 1$
+
+\begin{displaymath}
+Q_2(x) = a_0 + a_1 \cdot x + a_2 \cdot x^2
+\end{displaymath}
+\begin{displaymath}
+(\phi_0, \phi_0) = 1 \ \ (\phi_1, \phi_0) = (\phi_0, \phi_1) = \frac{1}{2}
+\end{displaymath}
+\begin{displaymath}
+(\phi_1, \phi_1) = \frac{1}{3} \ \ (\phi_2, \phi_0) = (\phi_0, \phi_2) = \frac{1}{3}
+\end{displaymath}
+\begin{displaymath}
+(\phi_2, \phi_2) = \frac{1}{5} \ \ (\phi_2, \phi_1) = (\phi_1, \phi_2) = \frac{1}{4}
+\end{displaymath}
+
+\begin{displaymath}
+(f, \phi_0) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot 1 dx = 0.6487441729730634
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_1) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot x dx = 0.2810046616215496
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_2) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot x^2 dx = 0.1751962707027603
+\end{displaymath}
+
+$
+\begin{pmatrix}
+1 & \frac{1}{2} & \frac{1}{3}
+\\
+\frac{1}{2} & \frac{1}{3} & \frac{1}{4}
+\\
+\frac{1}{3} & \frac{1}{4} & \frac{1}{5}
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+a_0
+\\
+a_1
+\\
+a_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.6487441729730634
+\\
+0.2810046616215496
+\\
+0.1751962707027603
+\end{pmatrix}
+$\\[1mm]
+
+$
+ \begin{cases}
+  a_0 = 0.9784178594645938
+\\
+  a_1 = -0.9372239221896193
+\\
+  a_2 = 0.416814823809832
+ \end{cases}
+$\\[1mm]
+
+\begin{displaymath}
+Q_2(x) = 0.416814823809832 \cdot x^2 - 0.9372239221896193 \cdot x + 0.9784178594645938
+\end{displaymath}
+
+\subsection{С помощью ортонормированных многочленов}
+
+$f_0(x) \equiv 1, f_1(x) = x, f_2(x) = x^2, P(x) \equiv 1$
+
+\begin{displaymath}
+g_0(x) = f_0(x) = 1
+\end{displaymath}
+\begin{displaymath}
+g_1(x) = f_1(x) - \frac{\int_0^1 f_1(x) g_0(x)dx}{\int_0^1 (g_0(x))^2dx}g_0(x) = x - \frac{1}{2}
+\end{displaymath}
+\begin{displaymath}
+g_2(x) = f_2(x) - \frac{\int_0^1 f_2(x) g_0(x)dx}{\int_0^1 (g_0(x))^2dx}g_0(x) - \frac{\int_0^1 f_2(x) g_1(x)dx}{\int_0^1 (g_1(x))^2dx}g_1(x) = x^2 - x + \frac{1}{6}
+\end{displaymath}
+
+\begin{displaymath}
+\tilde{g}(x) = \frac{g(x)}{\alpha} \Rightarrow \int_0^1 \frac{(g(x))^2dx}{\alpha^2} = 1 \Rightarrow \alpha = \sqrt{\int_0^1 (g(x))^2dx}
+\end{displaymath}
+
+\begin{displaymath}
+\alpha_0 = 1, \tilde{g}_0(x) = 1
+\end{displaymath}
+\begin{displaymath}
+\alpha_1 = \frac{1}{2 \sqrt{3}}, \tilde{g}_1(x) = \sqrt{3} \cdot (2x - 1)
+\end{displaymath}
+\begin{displaymath}
+\alpha_2 = \frac{1}{2 \sqrt{3}}, \tilde{g}_2(x) = \sqrt{5} \cdot (6x^2 - 6x + 1)
+\end{displaymath}
+
+\begin{displaymath}
+Q_2(x) = a_0 + a_1 \sqrt{3}(2x - 1) + a_2 \sqrt{5}(6x^2 - 6x + 1)
+\end{displaymath}
+
+\begin{displaymath}
+(\phi_0, \phi_0) = 1 \ \ (\phi_1, \phi_0) = (\phi_0, \phi_1) = 0
+\end{displaymath}
+\begin{displaymath}
+(\phi_1, \phi_1) = 1 \ \ (\phi_2, \phi_0) = (\phi_0, \phi_2) = 0
+\end{displaymath}
+\begin{displaymath}
+(\phi_2, \phi_2) = 1 \ \ (\phi_2, \phi_1) = (\phi_1, \phi_2) = 0
+\end{displaymath}
+
+\begin{displaymath}
+(f, \phi_0) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot 1 dx = 0.6487441729730634
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_1) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot \sqrt{3} (2x - 1) dx = -0.1502291665191494
+\end{displaymath}
+\begin{displaymath}
+(f, \phi_2) = \int_0^1 \frac{4}{4 + 5 \cdot x} \cdot \sqrt{5} (6x^2 - 6x + 1) dx = 0.03106754266894511
+\end{displaymath}
+
+$
+\begin{pmatrix}
+1 & 0 & 0
+\\
+0 & 1 & 0
+\\
+0 & 0 & 1
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+a_0
+\\
+a_1
+\\
+a_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+0.6487441729730634
+\\
+-0.1502291665191494
+\\
+0.03106754266894511
+\end{pmatrix}
+$\\[1mm]
+
+$
+ \begin{cases}
+  a_0 = 0.6487441729730634
+\\
+  a_1 = -0.1502291665191494
+\\
+  a_2 = 0.03106754266894511
+ \end{cases}
+$\\[1mm]
+
+\begin{displaymath}
+Q_2(x) = 0.4168148238098192 \cdot x^2 - 0.9372239221896032 \cdot x + 0.9784178594645919
+\end{displaymath}
+
+\subsection{С помощью ортогональных многочленов Лежандра порядка до двух включительно}
+
+
+
+\subsection{С помощью ортогональных многочленов Чебышева порядка до двух включительно}
 
 
 \end{document}
