@@ -26,7 +26,8 @@ $y(0) = 1,\ \ y'(0) = 3$
 \end{center}
 
 Сделаем замены переменных:
-$x_1(t) = y(t),\ \ x_2(t) = y'(t) = x_1'(t) \ \ \Rightarrow x_2'(t) = y''(t)$
+
+$x_1(t) = y(t),\ \ x_2(t) = y'(t) = x_1'(t) \ \ \Rightarrow x_2'(t) = y''(t)$\\[1mm]
 
 Составим систему ДУ первого порядка:
 
@@ -99,14 +100,163 @@ x_0
 
 Запишем формулу Лагранжа-Сильвестра для матричной функции $f(A)$ и матрицы размером $2 \times 2$:
 \begin{displaymath}
-f(A) = T_1 \cdot f(\lambda_1) + T_2 \cdot T_2 \cdot f(\lambda_2) = \frac{A - \lambda_2 E}{\lambda_1 - \lambda_2} \cdot  f(\lambda_1) + \frac{A - \lambda_1 E}{\lambda_2 - \lambda_1} \cdot f(\lambda_2)
+f(A) = T_1 \cdot f(\lambda_1) + T_2 \cdot f(\lambda_2) = \frac{A - \lambda_2 E}{\lambda_1 - \lambda_2} \cdot  f(\lambda_1) + \frac{A - \lambda_1 E}{\lambda_2 - \lambda_1} \cdot f(\lambda_2)
 \end{displaymath}
 \begin{displaymath}
 e^{At} = \frac{A - \lambda_2 E}{\lambda_1 - \lambda_2} \cdot e^{\lambda_1 t} + \frac{A - \lambda_1 E}{\lambda_2 - \lambda_1} \cdot e^{\lambda_2 t}
 \end{displaymath}
-Подставим полученные $\lambda$.
+Подставим полученные $\lambda$:
 
-TODO
+\begin{displaymath}
+e^{At} = \frac{\begin{pmatrix}
+0 & 1
+\\
+-18 & 9
+\end{pmatrix} - \begin{pmatrix}
+6 & 0
+\\
+0 & 6
+\end{pmatrix}}{3 - 6} \cdot e^{3t} + \frac{\begin{pmatrix}
+0 & 1
+\\
+-18 & 9
+\end{pmatrix} - \begin{pmatrix}
+3 & 0
+\\
+0 & 3
+\end{pmatrix}}{6 - 3} \cdot e^{6t} = 
+\end{displaymath}
+
+\begin{displaymath}
+= \begin{pmatrix}
+2 & - \frac{1}{3}
+\\
+6 & -1
+\end{pmatrix} \cdot e^{3t} + \begin{pmatrix}
+-1 & \frac{1}{3}
+\\
+-6 & 2
+\end{pmatrix} \cdot e^{6t}
+\end{displaymath}
+
+Теперь определим:
+\begin{displaymath}
+e^{At} \cdot x_0 = e^{At} \cdot \begin{pmatrix}
+1
+\\
+3
+\end{pmatrix} = \begin{pmatrix}
+2 & - \frac{1}{3}
+\\
+6 & -1
+\end{pmatrix} \cdot \begin{pmatrix}
+1
+\\
+3
+\end{pmatrix} \cdot e^{3t} + \begin{pmatrix}
+-1 & \frac{1}{3}
+\\
+-6 & 2
+\end{pmatrix} \cdot \begin{pmatrix}
+1
+\\
+3
+\end{pmatrix} \cdot e^{6t} = 
+\end{displaymath} 
+\begin{displaymath}
+= \begin{pmatrix}
+1
+\\
+3
+\end{pmatrix} \cdot e^{3t} +
+\begin{pmatrix}
+0
+\\
+0
+\end{pmatrix} \cdot e^{6t}
+\end{displaymath}
+
+Вычислим значение определённого интеграла:
+
+\begin{displaymath}
+\int_0^t e^{A(t - \tau)} \cdot f(\tau) \cdot d \tau = e^{At} \cdot \int_0^t e^{A(-\tau)} \cdot f(\tau) \cdot d \tau =
+\end{displaymath}
+\begin{displaymath}
+= e^{At} \cdot \int_0^t \Big [ \begin{pmatrix}
+2 & - \frac{1}{3}
+\\
+6 & -1
+\end{pmatrix} \cdot e^{-3 \tau} + \begin{pmatrix}
+-1 & \frac{1}{3}
+\\
+-6 & 2
+\end{pmatrix} \cdot e^{-6 \tau} \Big ] \cdot \begin{pmatrix}
+0
+\\
+\tau - 1
+\end{pmatrix} \cdot d \tau =
+\end{displaymath}
+%%
+\begin{displaymath}
+= e^{At} \cdot \Big [ \int_0^t \begin{pmatrix}
+- \frac{1}{3} (\tau - 1)
+\\
+-(\tau - 1)
+\end{pmatrix} \cdot e^{-3 \tau} \cdot d \tau + \int_0^t \begin{pmatrix}
+\frac{1}{3} (\tau - 1)
+\\
+2 (\tau - 1)
+\end{pmatrix} \cdot e^{-6 \tau} \cdot d \tau \Big ] = 
+\end{displaymath}
+%%
+\begin{displaymath}
+= e^{At} \cdot \Big [  \begin{pmatrix}
+- \frac{1}{3}
+\\
+- 1
+\end{pmatrix} \int_0^t (\tau - 1) \cdot e^{-3 \tau} \cdot d \tau + \begin{pmatrix}
+\frac{1}{3}
+\\
+2 
+\end{pmatrix} \int_0^t (\tau - 1) \cdot e^{-6 \tau} \cdot d \tau \Big ]
+\end{displaymath}
+Вычислим по отдельности два интеграла:
+\begin{displaymath}
+\int_0^t (\tau - 1) \cdot e^{-3 \tau} \cdot d \tau = - \frac{t \cdot e^{-3t}}{3} + \frac{2 \cdot e^{-3t}}{9} - \frac{2}{9}
+\end{displaymath}
+\begin{displaymath}
+\int_0^t (\tau - 1) \cdot e^{-6 \tau} \cdot d \tau = - \frac{t \cdot e^{-6t}}{6} + \frac{5 \cdot e^{-6t}}{36} - \frac{5}{36}
+\end{displaymath}
+
+Получим общее решение:
+
+\begin{displaymath}
+x(t) =
+\begin{pmatrix}
+1
+\\
+3
+\end{pmatrix} \cdot e^{3t} + \Big [ \begin{pmatrix}
+2 & - \frac{1}{3}
+\\
+6 & -1
+\end{pmatrix} \cdot e^{3t} + \begin{pmatrix}
+-1 & \frac{1}{3}
+\\
+-6 & 2
+\end{pmatrix} \cdot e^{6t} \Big ] \cdot 
+\end{displaymath}
+\begin{displaymath}
+\cdot \Big [  \begin{pmatrix}
+- \frac{1}{3}
+\\
+- 1
+\end{pmatrix} \Big ( - \frac{t \cdot e^{-3t}}{3} + \frac{2 \cdot e^{-3t}}{9} - \frac{2}{9} \Big ) + \begin{pmatrix}
+\frac{1}{3}
+\\
+2 
+\end{pmatrix} \Big ( - \frac{t \cdot e^{-6t}}{6} + \frac{5 \cdot e^{-6t}}{36} - \frac{5}{36} \Big) \Big ]
+\end{displaymath}
 \subsection{Разностное уравнение}
 
 \end{document}
